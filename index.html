@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ♡</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffe4ec, #fff7fa, #ffd6e7);
+  color: #b34470;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+#birthday {
+  display: none;
+}
+
+.envelope {
+  font-size: 100px;
+  cursor: pointer;
+  animation: float 2s infinite ease-in-out;
+}
+
+h1 {
+  color: #d63384;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  margin: 20px 0;
+}
+
+h2 {
+  margin-top: 15px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.message {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+button {
+  padding: 14px 30px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 30px;
+  background: #e75480;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #cc3970;
+  transform: scale(1.05);
+}
+
+.flowers {
+  font-size: 75px;
+  animation: float 3s infinite ease-in-out;
+}
+
+.heart {
+  font-size: 40px;
+  animation: pulse 1.5s infinite;
+}
+
+.petal {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 999;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="screen" id="welcome">
+
+  <div class="envelope" onclick="openGift()">💌</div>
+
+  <h2>For someone very special ♡</h2>
+
+  <p style="margin-top:20px;">
+    I made something for you...
+  </p>
+
+  <button onclick="openGift()">
+    Open your gift ♡
+  </button>
+
+</section>
+
+<section class="screen" id="birthday">
+
+  <div class="flowers">🌷🌸🌷</div>
+
+  <h1>Happy Birthday, My Love!</h1>
+
+  <p class="message">
+    Happy birthday to my favorite person in the entire world.
+    Even though distance keeps us apart, my love for you never gets smaller.
+    I wish I could be beside you today, hold your hand, and celebrate
+    this special day with you.
+    <br><br>
+    Until that day comes, I hope this little gift reminds you that
+    somewhere, someone loves you endlessly. ♡
+  </p>
+
+  <div class="heart">❤️</div>
+
+  <p style="margin-top:25px;">
+    I love you, always. ♡
+  </p>
+
+</section>
+
+<script>
+function openGift() {
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("birthday").style.display = "flex";
+  createPetals();
+}
+
+function createPetals() {
+  setInterval(() => {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+
+    petal.innerHTML = ["🌸", "🌷", "💗", "🌺"][
+      Math.floor(Math.random() * 4)
+    ];
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (Math.random() * 20 + 15) + "px";
+    petal.style.animationDuration = (Math.random() * 4 + 4) + "s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+      petal.remove();
+    }, 8000);
+
+  }, 400);
+}
+</script>
+
+</body>
+</html>
